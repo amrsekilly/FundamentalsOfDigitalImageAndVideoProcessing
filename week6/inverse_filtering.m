@@ -5,7 +5,7 @@ close all
 clc
 
 % specify the threshold T
-T = 1e-1;
+T = 1e-7;
 
 %% read in the original, sharp and noise-free image
 original = im2double(rgb2gray((imread('original_cameraman.jpg'))));
