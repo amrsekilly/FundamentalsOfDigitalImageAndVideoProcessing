@@ -39,8 +39,11 @@ restored(restored < 0) = 0;
 restored(restored > 1) = 1;
 
 %% analysis of result
-noisy_psnr = 10 * log10(1 / (norm(original - noisy, 'fro') ^ 2 / H / W));
-restored_psnr = 10 * log10(1 / (norm(original - restored, 'fro') ^ 2 / H / W));
+noisy_psnr = 10 * log10(1 / (norm(original - noisy, 2) ^ 2 / H / W));
+restored_psnr = 10 * log10(1 / (norm(original - restored, 2) ^ 2 / H / W));
+
+%% ISNR Calculation
+ISNR =  10 * log10((mean2((original-noisy).^2)) / (mean2((original-restored).^2)))
 
 
 %% visualization
