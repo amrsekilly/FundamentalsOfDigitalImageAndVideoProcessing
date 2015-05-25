@@ -16,9 +16,14 @@ figure; imshow(image_blurred, 'border', 'tight');
 figure; imshow(image_noisy, 'border', 'tight');
 
 %% CLS restoration
-alpha = 1;  % you should try different values of alpha
+alpha = 100;  % you should try different values of alpha
 image_cls_restored = cls_restoration(image_noisy, blur_impulse, alpha);
 figure; imshow(image_cls_restored, 'border', 'tight');
 
 %% computation of ISNR
-% ...
+
+ISNR = 10 * log10((norm(image_original - image_noisy, 'fro') ^ 2) / ( norm(image_original - image_cls_restored, 'fro') ^ 2) )
+
+
+
+
