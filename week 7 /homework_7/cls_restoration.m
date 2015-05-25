@@ -21,7 +21,7 @@ C = fft2(Laplace, dim, dim);
 % Refer to the lecture for frequency response of CLS filter
 % Complete the implementation of the CLS filter by uncommenting the
 % following line and adding appropriate content
-% R = ???
+ R = conj(H) ./ (((abs(H)).^2) + alpha*((abs(C)).^2));
 
 %% CLS filtering
 Y = fft2(image_noisy, dim, dim);
