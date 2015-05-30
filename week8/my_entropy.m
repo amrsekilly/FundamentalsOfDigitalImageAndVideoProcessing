@@ -16,7 +16,26 @@ function entropy = my_intropy (I)
         I = imread('Cameraman256.bmp');
     end
     % alphabet
-    s = [1:255];
-    
-    % imshow(I);
+    % get all symbols
+    s = [];
+    for i = 1 : length(I)
+        for j = 1 : length(I)
+            s(end + 1) = I(i, j);
+        end 
+    end
+    % get the normalized version of s : ns
+    ns = zeros (1, length(s));
+    for i = 1 : length(s)
+        ns(i) = s(i) ./ sum(s);
+    end
+    % entropy = sum over all ns: - p(i) * log (p(i)) 
+    entropy = 0;
+    for i = 1 : length(ns)
+        if (ns(i) > 0)
+            entropy = (entropy - ns(i) * log2(ns(i)));
+        end
+    end
+   
 end
+
+
